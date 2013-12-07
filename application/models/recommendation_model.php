@@ -19,6 +19,10 @@ class Recommendation_model extends CI_Model {
     }
 
     public function get_apps($imei) {
+        return $this->mock_get_apps();
+    }
+    
+    private function mock_get_apps() {
         $app1 = array('Id' => 102,
             'Name' => '经典方块1',
             'PackageName' => 'jdfk.apk',
