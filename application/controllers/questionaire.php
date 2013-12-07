@@ -26,7 +26,7 @@ class Questionaire extends CI_Controller {
             $this->load->view('templates/footer');
         } else {
             $this->Preference_model->insert_new_preference();
-            preference_list();
+            $this->preference_list();
         }
     }
 
