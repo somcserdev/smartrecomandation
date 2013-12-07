@@ -11,8 +11,9 @@ class Questionaire extends CI_Controller {
     }
 
     public function index() {
-
+        $this->load->view('templates/header');
         $this->load->view('questionaire_form');
+        $this->load->view('templates/footer');
     }
 
     public function create() {
@@ -20,16 +21,20 @@ class Questionaire extends CI_Controller {
         $this->form_validation->set_rules('hobby', 'HOBBY', 'required');
 
         if ($this->form_validation->run() === FALSE) {
+            $this->load->view('templates/header');
             $this->load->view('questionaire_form');
+            $this->load->view('templates/footer');
         } else {
             $this->Preference_model->insert_new_preference();
             preference_list();
         }
     }
-    
+
     public function preference_list() {
         $data['user_preference'] = $this->Preference_model->get_preference();
+        $this->load->view('templates/header');
         $this->load->view('preference_list', $data);
+        $this->load->view('templates/footer');
     }
 
 }
