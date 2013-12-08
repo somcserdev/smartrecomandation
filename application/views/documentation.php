@@ -53,6 +53,7 @@
                 <ul>
                     <li>type : json</li>
                     <li style="word-wrap: break-word;">{"ResultCode":1,"TotalCount":2,"AppInfoList":[{"Id":102,"Name":"\u7ecf\u5178\u65b9\u57571","PackageName":"jdfk.apk","Size":1024,"Grade":4.5,"SmallIcon":" http:\/\/xxx\/1.jpg","IsFree":true,"Price":0,"VersionCode":2,"VersionName":"1.0","Publisher":"\u7b2c\u4e5d\u57ce\u5e02","Description":"\u8fd9\u662f\u7ecf\u5178\u65b9\u5757","Type":"game"},{"Id":103,"Name":"\u7ecf\u5178\u65b9\u57572","PackageName":"jdfk2222.apk","Size":1024,"Grade":3.5,"SmallIcon":" http:\/\/xxx\/2222.jpg","IsFree":true,"Price":0,"VersionCode":2,"VersionName":"1.0","Publisher":"\u7b2c\u4e5d\u57ce\u5e0211111","Description":"\u8fd9\u662f\u7ecf\u5178\u65b9\u5757111111","Type":"app"}]}</li> 
+                    <li><?php echo anchor(base_url().'smart_recommendation/index/ddddddddddddd', 'Get the Real Data', 'target="blank"'); ?></li>
                 </ul>
         </div>
     </div>
