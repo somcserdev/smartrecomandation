@@ -1,0 +1,19 @@
+﻿===================Apache 配置虚拟主机 =============================
+
+#windows7下配置本地域名及Apache虚拟主机
+编辑C:\Windows\System32\drivers\etc\host（注意用管理员权限）
+添加  127.0.0.1     www.smartrecommend.com
+
+#编辑下来就是在apache中配置:
+   1.把Include conf/extra/httpd-vhosts.conf前面的#号去掉。
+   2.把LoadModule vhost_alias_module modules/mod_vhost_alias.so前面的#号也去掉
+   3.保存退出
+   4.打开apache安装目录下的conf/extra下的httpd-vhosts.conf
+   5.在里面添加虚拟主机的站点信息:
+
+<VirtualHost *:80>
+        ServerAdmin chrischen03@hotmail.com
+        DocumentRoot D:/www/demo
+        ServerName www.smartrecommend.com
+        ErrorLog D:/www/demo/error.log
+</VirtualHost>
