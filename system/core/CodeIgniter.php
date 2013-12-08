@@ -354,6 +354,18 @@
 			}
 		}
 
+                //calling before method
+                $beforeMethod = "_before";
+                if (method_exists($CI, $beforeMethod)){
+                    call_user_func(array($CI,$beforeMethod));
+                }
+                $afterMethod = "_after";
+                if (method_exists($CI, $afterMethod)){
+                    call_user_func(array($CI,$afterMethod));
+                }
+                //call after method
+                
+                
 		// Call the requested method.
 		// Any URI segments present (besides the class/function) will be passed to the method for convenience
 		call_user_func_array(array(&$CI, $method), array_slice($URI->rsegments, 2));

@@ -6,13 +6,13 @@
  * and open the template in the editor.
  */
 
-class Base_controller extends CI_Controller{
+class Base_controller extends MY_Controller{
      public function __construct() {
         parent::__construct();
-        $this->__init();
     }
     
-    protected function __init(){
+    protected function _initialize() {
+        parent::_initialize();
         $this->load->helper('url');
     }
 }

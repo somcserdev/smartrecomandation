@@ -1,19 +1,15 @@
 <?php
-
-class Questionaire extends CI_Controller {
-
-    public function __construct() {
-        parent::__construct();
-        $this->load->helper('url');
+require_once 'html.php';
+class Questionaire extends Html_controller {
+    protected function _initialize() {
+        parent::_initialize();
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('Preference_model');
     }
 
     public function index() {
-        $this->load->view('templates/header');
         $this->load->view('questionaire_form');
-        $this->load->view('templates/footer');
     }
 
     public function create_via_webpage() {
@@ -36,9 +32,7 @@ class Questionaire extends CI_Controller {
 
     public function preference_list() {
         $data['user_preference'] = $this->Preference_model->get_preference();
-        $this->load->view('templates/header');
         $this->load->view('preference_list', $data);
-        $this->load->view('templates/footer');
     }
 
 }
