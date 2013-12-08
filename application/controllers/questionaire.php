@@ -1,5 +1,5 @@
 <?php
-require_once 'html.php';
+require_once 'comm/html.php';
 class Questionaire extends Html_controller {
     protected function _initialize() {
         parent::_initialize();

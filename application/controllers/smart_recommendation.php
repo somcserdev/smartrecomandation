@@ -1,5 +1,5 @@
 <?php
-require 'ajax.php';
+require 'comm/ajax.php';
 class Smart_recommendation extends Ajax_controller {
 
     protected function _initialize() {
