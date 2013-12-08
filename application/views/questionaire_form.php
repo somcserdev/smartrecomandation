@@ -1,6 +1,6 @@
 <div class='container'>
     <?php echo validation_errors('<div class="text-danger">', '</div>'); ?>
-    <?php echo form_open('questionaire/create', array('class' => 'form-horizontal')) ?>
+    <?php echo form_open('questionaire/create_via_webpage', array('class' => 'form-horizontal', 'method' => 'get')) ?>
     <div class="panel panel-primary">
         <div class="panel-heading">IMEI</div>
         <div class="panel-body">

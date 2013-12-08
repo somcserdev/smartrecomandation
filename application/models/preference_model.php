@@ -14,10 +14,10 @@ class Preference_model extends CI_Model {
 
     public function insert_new_preference() {
         $data = array(
-            'imei' => $this->input->post('imei'),
-            'gender' => $this->input->post('gender'),
-            'age' => $this->input->post('age'),
-            'hobby' => json_encode($this->input->post('hobby'))
+            'imei' => $this->input->get('imei'),
+            'gender' => $this->input->get('gender'),
+            'age' => $this->input->get('age'),
+            'hobby' => json_encode($this->input->get('hobby'))
         );
 
         return $this->db->insert('user_preference', $data);

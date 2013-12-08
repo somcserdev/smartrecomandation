@@ -17,3 +17,7 @@
         ServerName www.smartrecommend.com
         ErrorLog D:/www/demo/error.log
 </VirtualHost>
+#将CI中的index.php去掉
+ 1.编辑http.conf,找到<Directory />,将AllowOverride none改为AllowOverride all
+ 2.编写.htaccess文件
+apache 重写http://blog.csdn.net/wqmain/article/details/8942391
