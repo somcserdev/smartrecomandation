@@ -10,3 +10,4 @@ application/logs/*
 /nbproject/private/
 
 nbproject/*
+error.log
