@@ -7,7 +7,5 @@
  */
 require_once 'base.php';
 class Ajax_controller extends Base_controller{
-    protected function output2Json($data){
-        $this->output->set_output(json_encode($data));
-    }
+    
 }

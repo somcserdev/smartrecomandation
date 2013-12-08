@@ -15,4 +15,8 @@ class Base_controller extends MY_Controller{
         parent::_initialize();
         $this->load->helper('url');
     }
+    
+    protected function output2Json($data){
+        $this->output->set_output(json_encode($data));
+    }
 }
