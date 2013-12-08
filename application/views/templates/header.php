@@ -16,9 +16,9 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo base_url() ?>index.php?/questionaire/preference_list">User Preferences</a></li>
-                        <li><a href="<?php echo base_url() ?>index.php?/questionaire">Questionaire</a></li>
-                        <li><a href="<?php echo base_url() ?>index.php?/documentation">Documentation</a></li>
+                        <li><a href="<?php echo site_url("questionaire/preference_list") ?>">User Preferences</a></li>
+                        <li><a href="<?php echo site_url("questionaire") ?>">Questionaire</a></li>
+                        <li><a href="<?php echo site_url("documentation") ?>">Documentation</a></li>
                     </ul>
                 </div>
             </div>
