@@ -64,6 +64,21 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+$db['playnow']['hostname'] = 'localhost';
+$db['playnow']['username'] = 'root';
+$db['playnow']['password'] = '';
+$db['playnow']['database'] = 'playnow';
+$db['playnow']['dbdriver'] = 'mysql';
+$db['playnow']['dbprefix'] = '';
+$db['playnow']['pconnect'] = TRUE;
+$db['playnow']['db_debug'] = TRUE;
+$db['playnow']['cache_on'] = FALSE;
+$db['playnow']['cachedir'] = '';
+$db['playnow']['char_set'] = 'utf8';
+$db['playnow']['dbcollat'] = 'utf8_general_ci';
+$db['playnow']['swap_pre'] = '';
+$db['playnow']['autoinit'] = TRUE;
+$db['playnow']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
