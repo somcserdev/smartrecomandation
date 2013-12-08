@@ -16,18 +16,22 @@ class Questionaire extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function create() {
-        $this->form_validation->set_rules('imei', 'IMEI', 'required');
-        $this->form_validation->set_rules('hobby', 'HOBBY', 'required');
+    public function create_via_webpage() {
+        //$this->form_validation->set_rules('imei', 'IMEI', 'required');
+        //$this->form_validation->set_rules('hobby', 'HOBBY', 'required');
+//        if ($this->form_validation->run() === FALSE) {
+//            $this->load->view('templates/header');
+//            $this->load->view('questionaire_form');
+//            $this->load->view('templates/footer');
+//        } else {
+        $this->Preference_model->insert_new_preference();
+        $this->preference_list();
+//        }
+    }
 
-        if ($this->form_validation->run() === FALSE) {
-            $this->load->view('templates/header');
-            $this->load->view('questionaire_form');
-            $this->load->view('templates/footer');
-        } else {
-            $this->Preference_model->insert_new_preference();
-            $this->preference_list();
-        }
+    public function create_via_client() {
+        $this->Preference_model->insert_new_preference();
+        $this->output->set_output(json_encode(array('result' => 'ok')));
     }
 
     public function preference_list() {
