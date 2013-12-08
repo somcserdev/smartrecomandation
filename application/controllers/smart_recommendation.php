@@ -11,6 +11,10 @@ class Smart_recommendation extends Ajax_controller {
     }
 
     public function index($imei = FALSE) {
+        if($imei == FALSE){
+            $this->output2Json(array());
+            return;
+        }
         $apps = $this->Recommendation_model->get_apps($imei,  $this->smart_recommend_driver);
         $this->output2Json($apps);
     }
