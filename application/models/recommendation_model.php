@@ -30,6 +30,7 @@ class Recommendation_model extends CI_Model {
     }
 
     private function _analysis_user_preference($user_preference) {
+        if($user_preference == FALSE) return array();
         $categories = array();
         if($user_preference->gender == 'male' ){
             if($user_preference->age<=10){
@@ -96,7 +97,7 @@ class Recommendation_model extends CI_Model {
         if($query->num_rows > 0){
             return $result = $query->first_row() ;
         }  else {
-            return new stdClass();
+            return FALSE;
         }
     }
 
