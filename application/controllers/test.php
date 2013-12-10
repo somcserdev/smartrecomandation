@@ -1,5 +1,7 @@
 <?php
+
 require 'comm/ajax.php';
+
 class Test extends Ajax_controller {
 
     protected function _initialize() {
@@ -8,7 +10,7 @@ class Test extends Ajax_controller {
     }
 
     public function index() {
-        $map = array('name'=>'jiaoyan', 'age'=>'32');
+        $map = array('name' => 'jiaoyan', 'age' => '32');
         $this->output2Json(signature($map));
     }
 
