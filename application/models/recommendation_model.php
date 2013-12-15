@@ -15,6 +15,8 @@ class Recommendation_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
+        $this->load->helper('Cipher_helper');
+        $this->load->config('security');
     }
 
     public function get_apps($imei, $driver_name = 'database') {
@@ -29,60 +31,94 @@ class Recommendation_model extends CI_Model {
         return $apps;
     }
 
+    /**
+     * 
+     * Game Category
+     * 10 动作格斗
+     * 11 休闲益智
+     * 12 角色扮演
+     * 13 手机网游
+     * 14 体育竞速
+     * 15 飞行射击
+     * 16 棋牌游戏
+     * 17 策略塔防
+     * 
+     * App Category
+     * 1 装机必备
+     * 2 壁纸美化
+     * 3 书籍阅读
+     * 4 聊天通讯
+     * 5 生活娱乐
+     * 6 购物理财
+     * 7 地图导航
+     * 8 网络社区
+     * 9 系统工具
+     * 18 影音视频
+     */
     private function _analysis_user_preference($user_preference) {
-        if($user_preference == FALSE) return array();
+        if ($user_preference == FALSE)
+            return array(1);
         $categories = array();
-        if($user_preference->gender == 'male' ){
-            if($user_preference->age<=10){
-                $categories[] = 4;
-                $categories[] = 15;
-            }elseif($user_preference->age>10 &&$user_preference->age<=30 ){
-                $categories[] = 4;
+        if ($user_preference->gender == 'male') {
+            if ($user_preference->age <= 10) {
+                $categories[] = 16;
                 $categories[] = 11;
-                $categories[] = 13;
                 $categories[] = 17;
-                $categories[] = 21;
-            }  else {
-                $categories[] = 4;
-                $categories[] = 3;
-                $categories[] = 5;
-                $categories[] = 20;
-                $categories[] = 12;
-            }
-        }else{
-            if($user_preference->age<=10){
-                $categories[] = 2;
-                $categories[] = 4;
-                $categories[] = 15;
-            }elseif($user_preference->age>10 &&$user_preference->age<=30 ){
-                $categories[] = 2;
                 $categories[] = 4;
                 $categories[] = 8;
-            }  else {
+                $categories[] = 1;
+                $categories[] = 18;
+            } elseif ($user_preference->age > 10 && $user_preference->age <= 30) {
+                $categories[] = 10;
                 $categories[] = 14;
-                $categories[] = 23;
+                $categories[] = 13;
+                $categories[] = 17;
+                $categories[] = 18;
+                $categories[] = 7;
+            } else {
+                $categories[] = 1;
+                $categories[] = 6;
+                $categories[] = 3;
+                $categories[] = 8;
+                $categories[] = 16;
+            }
+        } else {
+            if ($user_preference->age <= 10) {
+                $categories[] = 4;
+                $categories[] = 8;
+                $categories[] = 2;
+                $categories[] = 11;
+                $categories[] = 1;
+                $categories[] = 18;
+            } elseif ($user_preference->age > 10 && $user_preference->age <= 30) {
+                $categories[] = 5;
+                $categories[] = 6;
+                $categories[] = 8;
+                $categories[] = 2;
+                $categories[] = 3;
+                $categories[] = 11;
+            } else {
+                $categories[] = 3;
+                $categories[] = 8;
+                $categories[] = 5;
             }
         }
-//        if ($user_preference->gender == 'male') {
-//           $categories[] = 4;
-//        } else {
-//            $categories[] = 4;
-//            $categories[] = 5;
-//            $categories[] = 8;
-//            $categories[] = 22;
-//        }
-//        if ($user_preference->age <= 10) {
-//            $categories[] = 14;
-//            $categories[] = 18;
-//        } elseif ($user_preference->age > 10 and $user_preference->age <= 30) {
-//            $categories[] = 19;
-//            $categories[] = 17;
-//            $categories[] = 22;
-//        } else {
-//            $categories[] = 22;
-//        }
+        
+        $hooby_map = array(
+            'Reading' => 3,
+            'Shopping' => 6,
+            'Eating' => 4,
+            'Entertainment' => 18,
+            'Game' => ''
+        );
+        
         if ($user_preference->hobby) {
             $hobies = json_decode($user_preference->hobby);
+            foreach ($hobies as $key=> $value) {
+                if (!in_array($hooby_map[$value], $categories) && $hooby_map[$value] != '') {
+                    $categories[] = $hooby_map[$value];
+                }
+            }
         }
         return $categories;
     }
@@ -93,10 +129,10 @@ class Recommendation_model extends CI_Model {
         $this->db->where("imei", $imei);
         $this->db->order_by("id", 'desc');
         $this->db->limit(1);
-        $query =  $this->db->get();
-        if($query->num_rows > 0){
-            return $result = $query->first_row() ;
-        }  else {
+        $query = $this->db->get();
+        if ($query->num_rows > 0) {
+            return $result = $query->first_row();
+        } else {
             return FALSE;
         }
     }

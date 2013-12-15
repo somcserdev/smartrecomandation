@@ -2,4 +2,10 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$config['security_key'] = "705582a3db9bd2ee"; 
+$config['app_key'] = '';
+
+$config['security_key'] = '';
+
+//$config['server_url'] = '';
+
+$config['server_url'] = '';

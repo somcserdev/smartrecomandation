@@ -5,4 +5,4 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$config['recommendation_driver'] = 'database';//database or remote
+$config['recommendation_driver'] = 'remote';//database or remote

@@ -6,6 +6,6 @@ function signature($content_map) {
     foreach ($content_map as $key => $value) {
         $content .= $key . $value;
     }
-    $content .= 'security_key' . $CI->config->item('security_key');
-    return sha1($content);
+    $content .= $CI->config->item('security_key');
+    return sha1(urlencode($content));
 }
