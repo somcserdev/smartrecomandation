@@ -83,10 +83,12 @@ class Http {
 
     private function setProxy($curl) {
         if ($this->useProxy == TRUE) {
+            log_message("debug", "useProxy");
             //以下代码设置代理服务器
             //代理服务器地址
             curl_setopt($curl, CURLOPT_PROXY, $this->proxyHost);
             if (!empty($this->proxyUserName)) {
+                log_message("debug", "proxyUserName " . $this->proxyUserName);
                 curl_setopt($curl, CURLOPT_PROXYUSERPWD, $this->proxyUserName . ':' . $this->proxyPassword);
             }
         }
@@ -121,7 +123,7 @@ class Http {
     private function _execute($curl){
          $tmpInfo = curl_exec($curl); // 执行操作
         if (curl_errno($curl)) {
-            echo 'Errno' . curl_error($curl);
+            log_message('Error', curl_error($curl));
         }
         return $tmpInfo;
     }

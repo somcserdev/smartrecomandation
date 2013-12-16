@@ -15,8 +15,8 @@ class Recommendation_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->load->helper('Cipher_helper');
         $this->load->config('security');
+        $this->load->helper('cipher');
     }
 
     public function get_apps($imei, $driver_name = 'database') {
